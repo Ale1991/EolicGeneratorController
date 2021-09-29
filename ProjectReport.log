@@ -1,0 +1,672 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.12) (preloaded format=pdflatex 2021.1.5)  29 SEP 2021 11:09
+entering extended mode
+**./ProjectReport.tex
+(ProjectReport.tex
+LaTeX2e <2020-10-01> patch level 3
+L3 programming layer <2020-12-07> xparse <2020-03-03>
+("C:\Program Files\MiKTeX\tex/latex/base\article.cls"
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+("C:\Program Files\MiKTeX\tex/latex/base\size10.clo"
+File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count177
+\c@section=\count178
+\c@subsection=\count179
+\c@subsubsection=\count180
+\c@paragraph=\count181
+\c@subparagraph=\count182
+\c@figure=\count183
+\c@table=\count184
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+("C:\Program Files\MiKTeX\tex/latex/base\fontenc.sty"
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+)
+("C:\Program Files\MiKTeX\tex/latex/base\inputenc.sty"
+Package: inputenc 2020/08/01 v1.3d Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+
+("C:\Program Files\MiKTeX\tex/latex/ucs\utf8x.def"
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+))
+("C:\Program Files\MiKTeX\tex/latex/ucs\ucs.sty"
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+
+("C:\Program Files\MiKTeX\tex/latex/ucs\uni-global.def"
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count185
+\uc@combtoks=\toks17
+\uc@combtoksb=\toks18
+\uc@temptokena=\toks19
+)
+("C:\Program Files\MiKTeX\tex/generic/babel\babel.sty"
+Package: babel 2020/12/16 3.52 The Babel package
+
+("C:\Program Files\MiKTeX\tex/generic/babel\babel.def"
+File: babel.def 2020/12/16 3.52 Babel common definitions
+\babel@savecnt=\count186
+\U@D=\dimen139
+\l@babelnohyphens=\language79
+
+("C:\Program Files\MiKTeX\tex/generic/babel\txtbabel.def")
+\bbl@readstream=\read2
+)
+\bbl@dirlevel=\count187
+
+*************************************
+* Local config file bblopts.cfg used
+*
+("C:\Program Files\MiKTeX\tex/latex/arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Program Files\MiKTeX\tex/latex/babel-italian\italian.ldf"
+Language: italian 2020/05/21 v.1.4.04 Italian support for the babel system
+\it@lettering=\count188
+\it@doublequoteactive=\count189
+\it@ISOcompliance=\count190
+)
+("C:\Program Files\MiKTeX\tex/latex/babel-english\english.ldf"
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: \l@canadian = using hyphenrules for english
+(babel)             (\language0) on input line 102.
+Package babel Info: \l@australian = using hyphenrules for ukenglish
+(babel)             (\language73) on input line 105.
+Package babel Info: \l@newzealand = using hyphenrules for ukenglish
+(babel)             (\language73) on input line 108.
+))
+("C:\Program Files\MiKTeX\tex/latex/etoolbox\etoolbox.sty"
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count191
+)
+("C:\Program Files\MiKTeX\tex/latex/amsfonts\amssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Program Files\MiKTeX\tex/latex/amsfonts\amsfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks20
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Program Files\MiKTeX\tex/latex/base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+("C:\Program Files\MiKTeX\tex/latex/amsmath\amsmath.sty"
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX\tex/latex/amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Program Files\MiKTeX\tex/latex/amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks21
+\ex@=\dimen140
+))
+("C:\Program Files\MiKTeX\tex/latex/amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen141
+)
+("C:\Program Files\MiKTeX\tex/latex/amsmath\amsopn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count192
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count193
+\leftroot@=\count194
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count195
+\DOTSCASE@=\count196
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box47
+\strutbox@=\box48
+\big@size=\dimen142
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count197
+\c@MaxMatrixCols=\count198
+\dotsspace@=\muskip16
+\c@parentequation=\count199
+\dspbrk@lvl=\count266
+\tag@help=\toks22
+\row@=\count267
+\column@=\count268
+\maxfields@=\count269
+\andhelp@=\toks23
+\eqnshift@=\dimen143
+\alignsep@=\dimen144
+\tagshift@=\dimen145
+\tagwidth@=\dimen146
+\totwidth@=\dimen147
+\lineht@=\dimen148
+\@envbody=\toks24
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks25
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+("C:\Program Files\MiKTeX\tex/latex/lipsum\lipsum.sty"
+("C:\Program Files\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty"
+("C:\Program Files\MiKTeX\tex/latex/l3kernel\expl3.sty"
+Package: expl3 2020-12-07 L3 programming layer (loader) 
+
+("C:\Program Files\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def"
+File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
+\l__kernel_color_stack_int=\count270
+\l__pdf_internal_box=\box49
+))
+Package: l3keys2e 2020-10-27 LaTeX2e option processing using LaTeX3 keys
+)
+Package: lipsum 2021-08-01 v2.5 150 paragraphs of Lorem Ipsum dummy text
+\g__lipsum_par_int=\count271
+\l__lipsum_a_int=\count272
+\l__lipsum_b_int=\count273
+
+LaTeX3 Info: Defining command \LipsumPar with sig. 'm' on line 175.
+
+
+LaTeX3 Info: Defining command \SetLipsumParListItemStart with sig. 's+m' on
+(LaTeX3)     line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumParListStart with sig. 's+m' on line
+(LaTeX3)     208.
+
+
+LaTeX3 Info: Defining command \SetLipsumParListItemEnd with sig. 's+m' on line
+(LaTeX3)     208.
+
+
+LaTeX3 Info: Defining command \SetLipsumParListEnd with sig. 's+m' on line
+(LaTeX3)     208.
+
+
+LaTeX3 Info: Defining command \SetLipsumParListItemSurrounders with sig.
+(LaTeX3)     's+m+m' on line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumParListSurrounders with sig. 's+m+m'
+(LaTeX3)     on line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumParListItemSeparator with sig. 's+m'
+(LaTeX3)     on line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumSentenceListItemStart with sig. 's+m'
+(LaTeX3)     on line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumSentenceListStart with sig. 's+m' on
+(LaTeX3)     line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumSentenceListItemEnd with sig. 's+m' on
+(LaTeX3)     line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumSentenceListEnd with sig. 's+m' on
+(LaTeX3)     line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumSentenceListItemSurrounders with sig.
+(LaTeX3)     's+m+m' on line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumSentenceListSurrounders with sig.
+(LaTeX3)     's+m+m' on line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumSentenceListItemSeparator with sig.
+(LaTeX3)     's+m' on line 208.
+
+
+LaTeX3 Info: Defining command \SetLipsumDefault with sig. 'm' on line 214.
+
+
+LaTeX3 Info: Defining command \lipsum with sig. 'sO{\g_lipsum_default_range_tl
+(LaTeX3)     }o' on line 223.
+
+
+LaTeX3 Info: Defining command \unpacklipsum with sig.
+(LaTeX3)     'sO{\g_lipsum_default_range_tl }o' on line 225.
+
+
+LaTeX3 Info: Defining command \SetLipsumText with sig. 'm' on line 313.
+
+
+LaTeX3 Info: Defining command \SetLipsumLanguage with sig. 'm' on line 315.
+
+
+LaTeX3 Info: Defining command \setlipsum with sig. '+m' on line 344.
+
+
+("C:\Program Files\MiKTeX\tex/latex/lipsum\lipsum.ltd.tex"))
+("C:\Program Files\MiKTeX\tex/latex/url\url.sty"
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+("C:\Program Files\MiKTeX\tex/latex/graphics\graphicx.sty"
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX\tex/latex/graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks26
+)
+("C:\Program Files\MiKTeX\tex/latex/graphics\graphics.sty"
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX\tex/latex/graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX\tex/latex/graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+("C:\Program Files\MiKTeX\tex/latex/graphics-def\pdftex.def"
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+)
+
+LaTeX Warning: Unused global option(s):
+    [13pt].
+
+(ProjectReport.aux)
+\openout1 = `ProjectReport.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+ ("C:\Program Files\MiKTeX\tex/latex/ucs\ucsencs.def"
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+)
+LaTeX Info: Redefining \it@ocap on input line 9.
+LaTeX Info: Redefining \it@ccap on input line 9.
+
+("C:\Program Files\MiKTeX\tex/context/base/mkii\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count274
+\scratchdimen=\dimen151
+\scratchbox=\box50
+\nofMPsegments=\count275
+\nofMParguments=\count276
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count277
+\MPscratchDim=\dimen152
+\MPnumerator=\count278
+\makeMPintoPDFobject=\count279
+\everyMPtoPDFconversion=\toks28
+) ("C:\Program Files\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty"
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+)
+("C:\Program Files\MiKTeX\tex/latex/ucs\uni-0.def"
+File: uni-0.def 2013/05/13 UCS: Unicode data U+0000..U+00FF
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 12.
+
+
+("C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 12.
+
+
+("C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 12
+.
+
+("C:\Program Files\MiKTeX\tex/latex/base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+<graph/paleoliche.jpg, id=1, 352.31625pt x 234.8775pt>
+File: graph/paleoliche.jpg Graphic file (type jpg)
+<use graph/paleoliche.jpg>
+Package pdftex.def Info: graph/paleoliche.jpg  used on input line 15.
+(pdftex.def)             Requested size: 211.39137pt x 140.92758pt.
+ [1
+
+{C:/Users/aless/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./graph/paleoli
+che.jpg>] [2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+<eolcont.png, id=24, 586.19pt x 318.18875pt>
+File: eolcont.png Graphic file (type png)
+<use eolcont.png>
+Package pdftex.def Info: eolcont.png  used on input line 174.
+(pdftex.def)             Requested size: 351.7167pt x 190.9147pt.
+
+Overfull \hbox (6.7167pt too wide) in paragraph at lines 174--175
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--184
+
+ []
+
+[4 <./eolcont.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 235--236
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+
+Overfull \hbox (62.01933pt too wide) detected at line 289
+\OML/cmm/m/it/10 K \OT1/cmr/m/n/10 = [] = [] [] = [] = [] = []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 289--290
+
+ []
+
+[5]
+<graph/ycont.png, id=33, 411.136pt x 308.352pt>
+File: graph/ycont.png Graphic file (type png)
+<use graph/ycont.png>
+Package pdftex.def Info: graph/ycont.png  used on input line 296.
+(pdftex.def)             Requested size: 246.6835pt x 185.01262pt.
+
+Overfull \hbox (5.8299pt too wide) in paragraph at lines 298--301
+\T1/cmr/m/n/10 É pos-si-bile no-tare l'effeto del con-trollo oltre quello pro-p
+orzionale , che l'integrativo
+ []
+
+<graph/ucont.png, id=34, 411.136pt x 308.352pt>
+File: graph/ucont.png Graphic file (type png)
+<use graph/ucont.png>
+Package pdftex.def Info: graph/ucont.png  used on input line 302.
+(pdftex.def)             Requested size: 246.6835pt x 185.01262pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--305
+
+ []
+
+<graph/ycontsin.png, id=35, 411.136pt x 308.352pt>
+File: graph/ycontsin.png Graphic file (type png)
+<use graph/ycontsin.png>
+Package pdftex.def Info: graph/ycontsin.png  used on input line 306.
+(pdftex.def)             Requested size: 246.6835pt x 185.01262pt.
+[6 <./graph/ycont.png (PNG copy)> <./graph/ucont.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
+
+ []
+
+<graph/ucontsin.png, id=39, 411.136pt x 308.352pt>
+File: graph/ucontsin.png Graphic file (type png)
+<use graph/ucontsin.png>
+Package pdftex.def Info: graph/ucontsin.png  used on input line 310.
+(pdftex.def)             Requested size: 246.6835pt x 185.01262pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--320
+
+ []
+
+[7 <./graph/ycontsin.png (PNG copy)> <./graph/ucontsin.png (PNG copy)>]
+<eoltrig.png, id=44, 579.16376pt x 361.35pt>
+File: eoltrig.png Graphic file (type png)
+<use eoltrig.png>
+Package pdftex.def Info: eoltrig.png  used on input line 327.
+(pdftex.def)             Requested size: 347.50093pt x 216.81168pt.
+
+Overfull \hbox (2.50093pt too wide) in paragraph at lines 327--328
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--338
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--338
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--338
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--338
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
+
+ []
+
+[8 <./eoltrig.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 354--356
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 375--376
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--388
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 393--394
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
+
+ []
+
+[9]
+<graph/ydisc.png, id=52, 411.136pt x 308.352pt>
+File: graph/ydisc.png Graphic file (type png)
+<use graph/ydisc.png>
+Package pdftex.def Info: graph/ydisc.png  used on input line 413.
+(pdftex.def)             Requested size: 246.6835pt x 185.01262pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 415--417
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 415--417
+
+ []
+
+<graph/udisc.png, id=53, 411.136pt x 308.352pt>
+File: graph/udisc.png Graphic file (type png)
+<use graph/udisc.png>
+Package pdftex.def Info: graph/udisc.png  used on input line 418.
+(pdftex.def)             Requested size: 246.6835pt x 185.01262pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
+
+ []
+
+[10 <./graph/ydisc.png (PNG copy)> <./graph/udisc.png (PNG copy)>]
+<graph/trigger1.png, id=57, 1044.703pt x 355.729pt>
+File: graph/trigger1.png Graphic file (type png)
+<use graph/trigger1.png>
+Package pdftex.def Info: graph/trigger1.png  used on input line 422.
+(pdftex.def)             Requested size: 417.8738pt x 142.28908pt.
+
+Overfull \hbox (72.8738pt too wide) in paragraph at lines 422--423
+ [] 
+ []
+
+<graph/ydiscsin.png, id=58, 411.136pt x 308.352pt>
+File: graph/ydiscsin.png Graphic file (type png)
+<use graph/ydiscsin.png>
+Package pdftex.def Info: graph/ydiscsin.png  used on input line 427.
+(pdftex.def)             Requested size: 246.6835pt x 185.01262pt.
+<graph/udiscsin.png, id=59, 411.136pt x 308.352pt>
+File: graph/udiscsin.png Graphic file (type png)
+<use graph/udiscsin.png>
+Package pdftex.def Info: graph/udiscsin.png  used on input line 431.
+(pdftex.def)             Requested size: 246.6835pt x 185.01262pt.
+[11 <./graph/trigger1.png (PNG copy)> <./graph/ydiscsin.png (PNG copy)>]
+<graph/trigger2.png, id=63, 1044.703pt x 355.729pt>
+File: graph/trigger2.png Graphic file (type png)
+<use graph/trigger2.png>
+Package pdftex.def Info: graph/trigger2.png  used on input line 435.
+(pdftex.def)             Requested size: 417.8738pt x 142.28908pt.
+
+Overfull \hbox (72.8738pt too wide) in paragraph at lines 435--436
+ [] 
+ []
+
+[12 <./graph/udiscsin.png (PNG copy)> <./graph/trigger2.png (PNG copy)>]
+Overfull \hbox (18.44711pt too wide) in paragraph at lines 488--489
+[]$\OML/cmm/m/it/10 ET\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 DEOL\OT1/cmr/m/n/10 ] =
+ \OML/cmm/m/it/10 ET\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 CEOL\OT1/cmr/m/n/10 ]$ \T
+1/cmr/m/n/10 col-lega l'uscita ET(trigger) del pro-cesso all'ingresso
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 502--524
+
+ []
+
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 555--568
+
+ []
+
+[14] [15] (ProjectReport.aux) ) 
+Here is how much of TeX's memory you used:
+ 5053 strings out of 479624
+ 70094 string characters out of 2875024
+ 459242 words of memory out of 3000000
+ 22123 multiletter control sequences out of 15000+200000
+ 415359 words of font info for 66 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 78i,9n,83p,402b,601s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\aless\AppData\Local\MiKTeX\fonts/pk/l
+jfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\aless\AppData\Local\MiKTeX\font
+s/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\aless\AppData\Local\MiKTe
+X\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\aless\AppData\Local
+\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\aless\AppData
+\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\aless\A
+ppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Program 
+Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1
+/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.
+pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Progra
+m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on ProjectReport.pdf (15 pages, 309485 bytes).
+PDF statistics:
+ 310 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+

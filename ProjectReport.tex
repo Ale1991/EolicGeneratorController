@@ -1,0 +1,588 @@
+\documentclass[a4paper,13pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[italian,english]{babel}
+\usepackage{amssymb,latexsym,amsfonts,amsmath}
+\usepackage{lipsum}
+\usepackage{url}
+\usepackage{graphicx}
+\begin{document}
+\author{Andrea Pagliaro , Alessio Susco, Shanj Raul Ken Zaccaretti}
+\title{Studio e Progettazione del controllo sulla velocità di rotazione di un generatore eolico}
+\maketitle
+\section{Introduzione}
+\begin{center}
+\includegraphics[scale=0.6]{graph/paleoliche.jpg}
+\end{center}
+Una turbina eolica \'e un dispositivo che consente di estrarre energia dal vento , la quale \'e composta da una torre alla cui estremit\'a \'e fissata una carlinga contenente il generatore il quale \'e collegato al rotore attraverso la trasmissione.
+Il rotore presenta due pale ad inclinazione variabile (blade pitch angle).
+In alcune macchine l'inclinazione delle pale varia indipendentemente l'una dall'altra (indipendent blade pitch) , nel nostro caso , l'inclinazione di ogni pala varier\'a identicamente (blade collective pitch).
+Il generatore \'e progettato in base alle specifiche della rete a cui \'e accoppiato, in generale , la velocit\'a rotorica del generatore \'e variabile , nel nostro caso \'e fissata in base alla frequenza della rete.
+La coppia aerodinamica \'e trasferita al generatore attraverso la trasmissione (drive train).
+La velocit\'a di rotazione del generatore \'e tipicamente di 1500 rpm , invece , la velocit\'a del rotore si aggira tra le 20 e le 40 rivoluzioni al minuto.
+Le turbine eoliche possono produrre vari tipi di moti risultanti : dalla rotazione tra il rotore e il generatore , dall'imbardata (yaw) e dal rollio (roll) della carlinga e dalle flessioni elastiche delle pale , della trasmissione e della torre.
+Le turbine eoliche possono essere progettate come "downwind machines" o "upwind machines".
+Nelle "downwind machines" , il vento attraversa prima la torre per poi investire il rotore , mentre accade l'opposto nelle "upwind machines".
+La differenza sostanziale sta nel fatto che nelle "downwind machines" l'imbardata \'e stabile e pu\'o essere non vincolata (free yaw) , cio\'e la turbina \'e in grado di orientarsi in direzione del vento senza essere controllata (yaw-driven).
+Questo non accade per le "upwind machines" dove \'e necessario implementare un controllo che orienti la turbina nella direzione del vento.
+Le turbine eoliche possono essere classificate come:
+\begin{itemize}
+\item a velocit\'a fissa (dove il rotore e il generatore ruotano a velocit\'a costante);
+\item a velocit\'a variabile.
+\end{itemize}
+L'obiettivo di questo progetto \'e implementare un sistema di controllo che mantenga la velocit\'a di rotazione della turbina intorno ad un valore di riferimento, agendo sull'inclinazione delle pale (rotor collective pitch control).
+Saranno quindi trascurati i moti risultanti agenti sulla struttura e faremo riferimento ad una turbina eolica a velocit\'a fissa con imbardata non vincolata (free yaw downwind machines).
+Sar\'a anche trascurato il ritardo dovuto all'attuatore per le variazioni sull'angolo di pitch.
+
+\section{Modello del sistema}
+Per far si , che il rotore giri ad una velocit\'a costante in modo che la stessa corrente prodotta non abbia variazioni di frequenza, viene scelto di imporre una giusta angolazione delle pale a seconda della velocit\'a del vento.\\
+Gli studi e le ricerche effettuate ci hanno permesso di estrarre equazione di vario genere , ne mostreremo alcune :
+\begin{equation}
+P=\frac{1}{2}\,\rho\,A\,C_p\,V_w^3
+\end{equation}
+Che rappresenta la quantit\'a di potenza assorbita dal rotore di una generica turbina eolica presa in considerazione.\\
+Il $C_p$ \'e il coefficiente di potenza , dipendente da $\lambda$ e $\beta$.
+Dove $\lambda$ \'e dato da :
+\begin{equation}
+\lambda=\frac{\Omega\,R}{V_w}
+\end{equation}
+Che \'e detto tip-speed ratio ed \'e dato dal rapporto del prodotto tra la velocità angolare
+del rotore e il raggio dello stesso con la velocità del vento.
+Mentre $\beta$ rappresenta l'angolo di pitch relativo alle pale, cio\'e il valore dell'angolo compreso tra la direzione della pala e il disco che il rotore forma.\\
+Chiaramente la funzione del coefficiente di potenza comporta delle dinamiche non 
+lineari dipendenti che fanno riferimento alla geometria del rotore , tutto questo a sua volta si ripercuote sull'intero sistema rendendolo non lineare.\\  
+Ora , analizzando il sistema ricavato dalle precedenti espressioni \'e risultato molto difficile effettuare una linearizzazione.\\
+Dopo aver consultato varie pubblicazioni online sullo studio di turbine eoliche ,
+siamo riusciti a trovare il modello lineare di una turbina eolica ,dove \'e stato esplicitamente scritto
+che lo stesso \'e stato ricavato mediante l'applicazione di metodi numerici .\\
+Il testo fa riferimento ad una turbina eolica composta da un rotore con due pale ,
+un diametro del rotore di circa 43,4m ed un altezza terra-hub 36,6m.\\
+Detto questo passiamo allo studio del modello , che \'e dato dalla seguente:
+\begin{equation}
+\dot{x}=\frac{\gamma}{I_{rot}}x1+\frac{\sigma}{I_{rot}}\,\delta_\beta+\frac{\alpha}{I_{rot}}\,\delta_\omega
+\end{equation}
+Dove $x$ , lo stato del sistema rappresenta la velocità angolare del rotore ,
+$\delta_\beta$ \'e l'ingresso relativo alla perturbazione sul pitch, e
+$\delta_\omega$ la perturbazione relativa alla velocità del vento.\\
+Quindi la nostra matrice di stato \'e data da $A=\frac{\gamma}{I_{rot}}$,
+e i coefficienti dei rispettivi ingressi/uscite sono:
+\begin{equation}
+B=\frac{\sigma}{I_{rot}}
+\end{equation}
+\begin{equation}
+\Gamma=\frac{\alpha}{I_{rot}}
+\end{equation}
+$I_{rot}$ rappresenta l'inerzia del rotore.\\
+I valori $\gamma$ , $\sigma$ , $\alpha$ rappresentano le derivate parziali ricavate attraverso 
+l'equazione dell'aerodinamica del rotore descritta in tal modo:
+\begin{equation}
+T_{aero}=T(\omega_0,\Omega_0,\beta_0)+\frac{\delta \, T_{aero}}{\delta \, \Omega}+
+\frac{\delta \, T_{aero}}{\delta \, \beta}+\frac{\delta \, T_{aero}}{\delta \, \omega}
+\end{equation} 
+Dove i coefficienti $\gamma=\frac{\delta \, T_{aero}}{\delta \, \Omega}$=-0.1205
+$\sigma=\frac{\delta \, T_{aero}}{\delta \, \beta}$=-2.882,
+$\alpha=\frac{\delta \, T_{aero}}{\delta \, \omega}$=0.0658
+derivano dalla pubblicazione di cui si sta facendo riferimento per il progetto in questione.
+I valori del sistema a regime sono dati da $\omega_0$=18m/s , $\Omega_0$=42RPM e $\beta_0$=12deg.
+Passiamo ora a definire un controllo per la nostra turbina
+%----inzio parte controllo nel caso continuo
+\section{Controllo continuo}
+Per la progettazione del controllore \'e stato scelto di utilizzare un controllo PI,\\
+ovvero proporzionale-intergrativo.\\
+Quindi \'e stato pensato di inserire una retroazione dello stato e inserire il controllo a monte del processo e per rendere i calcoli delle costanti pi\'u semplici \'e stato effettuato un cambio di variabile.\\
+\'E stato quindi posto $e$ come l'errore tra l'uscita e il riferimento
+\begin{equation*}
+	e=x-x_{r}          %--------------------errore---------------------------
+\end{equation*}
+Voglio che e tenda a 0 per t tendente ad infinito , e sapendo che la dinamica dello stato è:
+%-----derivata dello stato-----	
+\begin{equation*}
+	\dot{x}=ax+bu+\gamma w_{d}    %-----------------derivata dello stato------------ 
+\end{equation*} \\
+Quindi:
+
+\begin{equation*}
+	\dot{e}=\dot{x}=a(e+x_{r})+bu+\gamma w_{d}\,\,\:           %-------------spiegazione equazione--------
+	\Rightarrow u=-\frac{a}{b} x_{r}-\frac{\gamma}{b} w_{d}
+\end{equation*} \\
+Dove $u_e$ rappresenter\'a l'errore desiderato che nel nostro caso vogliamo sia zero.\\
+Volendo attivare un controllo di tipo intergrativo oltre a quello proporzionale
+inserisco un ulteriore stato che chiamer\'o $I_e$.\\
+A questo punto dopo il cambio di variabile e l'aggiunta di tutto il necessario
+per il calcolo delle costanti , ottengo un sistema del tipo :
+\[Plant	:
+\begin{cases}
+	
+	\dot{I_{e}}= e \\
+	\dot{e} = a\,e + b\,u
+	
+\end{cases}\]
+
+Perciò il modello del nostro spazio di stato sar\'a riscritto in tal modo:
+\begin{equation*}	
+\begin{pmatrix}
+	
+	\dot{I_{e}} \\ \dot{e}
+	
+\end{pmatrix} =         %---------uguale a---------
+\begin{pmatrix}
+
+	0&1\\0&a
+
+\end{pmatrix}
+\begin{pmatrix}
+
+	I_{e}\\e
+
+\end{pmatrix} +           %------- + ------------
+\begin{pmatrix}
+
+	0\\b
+
+\end{pmatrix} u
+\end{equation*} \\
+Per andare a calcolare i guadagni dei singoli controlli esplicitiamo la matrice dinamica A:        %-------matrice A------------
+\begin{equation*}
+\begin{pmatrix}
+
+	0&1\\0&a
+
+\end{pmatrix}
+\end{equation*} \\
+
+	e la matrice ingresso-uscita B:          %--------matrice B-------------
+\begin{equation*}
+\begin{pmatrix}
+
+	0\\b
+
+\end{pmatrix}
+\end{equation*} \\
+
+%Per calcolarli utilizzeremo la formula di Ackermann, ma abbiamo prima bisogno di esplicitare il modello %dello spazio 		di
+%	stato in esame:
+Per quanto concerne l'ingresso di controllo del processo ovvero quello del pitch ,
+viene visto nella seguente forma dopo essere
+
+	
+\begin{equation*}
+	u_x=u_r+K_{p}\,x+K_{i}\int_{0}^{t} x \, d\tau              %------------------modello del controllo---------------
+\end{equation*}	
+Il nostro sistema controllato a questo punto si presenta cos\'i :
+
+\begin{center}
+\includegraphics[scale=0.6]{eolcont.png}
+\end{center}
+
+Dove non viene rappresentato lo schema dell'errore ma una visione pi\'u reale del sistema
+dove CEOL rappresenta il nostro rotore , e ctrlCEOL il controllo effettuato a monte del processo la cui uscita andr\'a a stimare il pitch delle pale.\\
+Mentre $x_{ref}$ il valore per cui si vuole che il rotore giri e che nel nostro caso \'e 42 RPM.
+Andiamo a calcolare gli autovalori mediante il teorema dell'assegnazione degli autovalori.
+\subsection{Assegnazione degli autovalori}
+A questo punto per Ackermann abbiamo bisogno che la matrice di raggiungibilità abbia rango pieno, essendo quest'ultima 	il più grande sottospazio \\A-invariante contenuto nell'immagine di B.\\ \\
+	Quindi:
+	
+\begin{equation*}
+	\rho(\mathcal{R}):=
+\rho(\:\begin{bmatrix}
+
+	B&AB
+
+\end{bmatrix}\:)=^{?}\rho_{max}=2
+\end{equation*}
+
+	Verifichiamo il tutto:
+	
+\begin{equation*}
+\begin{bmatrix}
+
+	B&AB
+
+\end{bmatrix} =              %--------------uguale a-----------------
+\begin{bmatrix}
+
+	0&b\\b&ab
+
+\end{bmatrix}
+\end{equation*}
+
+	Essendo $b=-2.8818$ abbiamo che il determinante della matrice  2x2 in esame risulta essere diverso da 0,
+	e quindi il rango è pieno e pari a 2.\\
+	Passiamo ad applicare la formula di Ackermann:
+	
+\begin{equation*}                    %----------Ackermann Formula------------
+	K=
+\begin{pmatrix}
+
+	K_{1}&K_{2}
+
+\end{pmatrix} =						%--------------uguale a----------------
+\begin{pmatrix}
+
+	K_{i}&K_{p}						
+
+\end{pmatrix} = -					%--------------uguale a meno--------------
+\begin{pmatrix}
+
+	0&1						
+
+\end{pmatrix}
+\begin{pmatrix}
+
+	B&AB					
+
+\end{pmatrix}^{-1}p(A)
+\end{equation*} \\
+
+		Dove p(A) è il polinomio caratteristico p($\lambda$) desiderato con $\lambda=A$.\\\\
+	In questo caso per assegnare due autovalori in -1 è stato scelto il seguente polinomio:\\
+
+\begin{equation*}
+	p(\lambda)_{des}=(\lambda+1)^{2}=\lambda^{2}+2\lambda+1        %---------------polinomio caratteristico------------
+\end{equation*} \\
+	
+	ottenendo una matrice triangolare superiore
+	
+\begin{equation*}
+	p(A)=A^{2}+2A+I_{2}=
+\begin{pmatrix}
+
+	1&a+2\\0&a^{2}+2a+1
+
+\end{pmatrix}
+\end{equation*} \\ \\
+
+	La matrice dei coefficienti da trovare può ora essere calcolata come segue:
+
+\begin{equation*}
+	K=
+\begin{pmatrix}
+
+	K_{1}&K_{2}
+
+\end{pmatrix} =                  %---------uguale a----------------
+\begin{pmatrix}
+
+	-\frac{1}{b}&0
+
+\end{pmatrix}
+\begin{pmatrix}
+
+	1&a+2\\0&a^{2}+2a+1
+
+\end{pmatrix} =                   %---------uguale a----------------
+\begin{pmatrix}
+
+	-\frac{1}{b}&-\frac{a+2}{b}
+
+\end{pmatrix} =                    %---------uguale a----------------
+\begin{pmatrix}
+
+	K_{i}&K_{p}
+
+\end{pmatrix} =                    %---------uguale a----------------
+\begin{pmatrix}
+
+	0.347&0.652
+
+\end{pmatrix}
+\end{equation*}\\
+
+\subsection{Grafici sul controllo continuo}
+Dai risultati ottenuti siamo andati a verificare gli effetti del controllo sul nostro sistema. \\
+Grazie al Simnon \'e stato possibile simulare l'intero sistema e valutarne quindi la risposta.
+Nel grafico che andremo a visionare \'e rappresentata la risposta del sistema per un ingresso di riferimento $u_r$=42 e $\omega$=18, ovviamente essendo 42 il valore desiderato non terremo conto di $\omega$ ma bisogna comunque tener presente che rappresentando la velocit\'a del vento ha un importante influenza sulla dinamica del rotore.
+\begin{center}
+\includegraphics[scale=0.6]{graph/ycont.png}
+\end{center}
+\'E possibile notare l'effeto del controllo oltre quello proporzionale ,
+che l'integrativo esercita valutando la sovraelongazione.\\
+Nel prossimo grafico invece l'uscita del nostro controllo dove \'e chiaro l'effetto dell'azione controllante esercitata dal PI. 
+\begin{center}
+\includegraphics[scale=0.6]{graph/ucont.png}
+\end{center}
+	Qui di seguito sono stati inseriti due grafici nel caso in cui il segnale di velocità del vento sia di tipo 				sinusoidale. Il nostro controllo non prevede una gestione adatta al controllo di disturbi sinusoidali e, come si 			osserva a seguire, il valore picco picco dell'oscillazione si mantiene comunque vicino al valore desiderato pari a 42 		RPM. \\
+\begin{center}
+\includegraphics[scale=0.6]{graph/ycontsin.png}
+\end{center}
+	Notiamo nel grafico seguente che l'azione controllante nel caso di disturbo sinusoidale produce oscillazioni rispetto 		al valore medio osservato precedentemente nell'azione di controllo del PI.\\ Questi risultati verranno commentati 			anche nella sezione di controllo discreto, per una migliore visione d'insieme sui risultati ottenuti. \\
+\begin{center}
+\includegraphics[scale=0.6]{graph/ucontsin.png}
+\end{center}
+
+Una volta constato che i valori calcolati per il controllo PI danno un ottima risposta 
+da parte del sistema rispetto a segnali costanti , siamo andati ad adattare il nostro sistema per effettuare un controllo digitale.\\
+Non andremo direttamente a tradurre tutto il processo e relativo controllo nell'ambito discreto 
+poich\'e \'e stato tutto gi\'a studiato nell'ambito continuo ,ma faremo in modo che il relativo campionamento del segnale di uscita di norma a frequenza costante vengano effettuato secondo tecniche di event-triggering.\\
+Questo consente di poter ridurre i consumi di energia derivante dalle frequenti azioni di controllo nel caso in cui venga ncampionato costantemente il segnale e quindi risparmiare.
+Segue quindi.\\
+%-------------Inizio parte discreta-----------------------
+
+\section{Controllo discreto con Event Triggering}
+
+	In questa parte parleremo del controllo discreto con ET della velocità di rotazione di una pala eolica mediante un
+	controllore PI.\\ Qui di seguito lo schema di controllo, dove possiamo notare le prime differenze dallo schema 				precedente.
+	
+\begin{center}
+\includegraphics[scale=0.6]{eoltrig.png}
+\end{center}
+
+	Rispetto allo schema del controllo continuo osserviamo la presenza di un nuovo ramo diretto, dotato a sua volta di un
+	feedback per la gestione dell'ET.\\ \\ \\ \\
+	
+\subsection{Ottimizzazione del criterio d'arresto}
+	Un altro problema da affrontare è il calcolo della norma del prodotto PBK.
+	Abbiamo bisogno di questo valore per gestire in maniera ottimale la soglia del criterio d'arresto nell'ET.\\
+	Per ottenere il prodotto in esame, abbiamo bisogno della matrice P, soluzione dell'equazione di Sylvester, essendo già 	note le matrici B e K.\\ \\ \\ \\
+	Ciò vale, tenendo conto della matrice dinamica $A_{c}$ :\\
+	
+\begin{equation*}
+	A_{c}=A+BK=
+\begin{pmatrix}
+
+	0&1\\-0.0418&-2.9604
+
+\end{pmatrix}
+\end{equation*} \\
+	
+	Per risolvere l'equazione di Sylvester
+	
+\begin{equation*}
+	A_{c}^{T}P + PA_{c} = -Q              %------------equazione di Sylvester----------------
+\end{equation*}
+
+	Scegliamo una matrice Q definita postiva, a piacere.\\
+	Per le nostre simulazioni abbiamo utilizzato una matrice Q del tipo:\\
+
+\begin{equation*}
+	Q=
+\begin{pmatrix}
+
+	\frac{1}{2}&0\\0&657
+
+\end{pmatrix}
+\end{equation*}\\
+	
+	Ottenendo la matrice P dall'equazione di Sylvester mediante il MATLAB:\\
+	
+\begin{equation*}
+	P=
+\begin{pmatrix}
+
+	22.4210&5.9774\\5.9774&112.9844
+
+\end{pmatrix}
+\end{equation*}\\
+
+	E' possibile quindi calcolare il prodotto PBK ed applicarne la norma 2:\\
+	
+\begin{equation*}
+	PBK=
+\begin{pmatrix}
+
+	-0.2500&-0.4697\\-4.7255&-8.8789
+
+\end{pmatrix}
+	\Rightarrow norm_{2}(PBK)=10.0722
+\end{equation*}\\
+
+	L'indice relativo al trigger, $\rho_{max}$ sarà dato infine da:
+	
+\begin{equation*}
+	\rho_{max}=2\frac{\theta}{20.1443} \lambda_{min}^{Q}
+\end{equation*}\\
+
+	con $\lambda_{min}^{Q}$ autovalore minimo della matrice Q, ovvero pari a 0.5 .\\
+	
+	Il $\rho_{max}$ viene utilizzato come indice di peso per la commutazione del coefficiente dell'ET nel codice sorgente.
+	\\ Il coefficiente dell'ET assumerà valore pari a 0, ovvero non agendo sul controllore, se il modulo dell'errore        	$n_{e}$ si mantiene sotto una certa soglia, definita proprio da:
+	
+\begin{equation*}
+	n_{r}=\rho_{max}n_{x}
+\end{equation*} \\
+
+	con $n_{x}$ modulo dell'uscita.
+	Altrimenti l'ET assume valore pari a 1, agendo sul sistema e quindi andando a stabilizzare il controllo.
+	
+\subsection{Grafici sul controllo discreto}
+	
+	Andiamo ora a discutere sui grafici ottenuti dal Simnon per quanto riguarda la simulazione nel tempo discreto.\\
+	Osserviamo dal grafico seguente l'andamento del segnale d'uscita, e se lo confrontiamo con quello a tempo continuo, ci 	accorgiamo della bontà dell'azione dell'ET sul controllo del sistema, notando tutte le commutazioni che in uscita si 		traducono in una alternanza di valori che portano asintoticamente al valore desiderato di 42 RPM.
+	
+\begin{center}
+\includegraphics[scale=0.6]{graph/ydisc.png}
+\end{center} 
+	A seguire l'azione controllante a tempo discreto esercitata dal controllore PI. \\
+	Notiamo inoltre l'azione dell'ET sul sistema osservando le continue commutazioni del segnale di controllo, assicurando 	stabilità al processo. E' presente inoltre un maggiore sforzo di controllo da parte del trigger fino ai 6 secondi, 			dovendo assestare con maggiore frequenza il contributo iniziale dell'uscita. \\ \\ 
+\begin{center}
+\includegraphics[scale=0.6]{graph/udisc.png} 
+\end{center}
+	Di seguito troviamo gli istanti di tempo in cui l'ET va ad agire sul controllo a tempo discreto.\\
+\begin{center}
+\includegraphics[scale=0.4]{graph/trigger1.png}
+\end{center}
+	La frequenza all'inizio è maggiore come illustrato precedentemente, fino ad assestarsi in corrispondenza del valore 		d'uscita desiderato.\\
+	Nel caso invece di segnale di velocità del vento di tipo sinusoidale, nel tempo discreto abbiamo un margine 				d'affidabilità peggiore rispetto al caso continuo, avendo in uscita sempre delle commutazioni ma con valori non troppo 	vicini a quelli desiderati.
+\begin{center}
+\includegraphics[scale=0.6]{graph/ydiscsin.png}
+\end{center}
+	Osserviamo nel grafico a seguire l'azione di controllo per disturbi sinusoidali.
+\begin{center}
+\includegraphics[scale=0.6]{graph/udiscsin.png}
+\end{center}
+	Nel grafico seguente le relative commutazioni del segnale di trigger.
+\begin{center}
+\includegraphics[scale=0.4]{graph/trigger2.png}
+\end{center}
+
+\section{Codice Simnon}
+Il progetto Simnon implementa fedelmente il modello continuo ed il modello event-triggered descritto da questa tesina.
+Iniziamo con l'analisi del codice relativo al file SEOL.T
+
+MACRO SEOL
+error 1e-6
+syst CEOL DEOL CONEOL
+store y1 y u w  ET[CEOL] e1 ne nr nx uc[CEOL] er[CEOL]
+simu 0 20
+END
+
+Con lo store stiamo dicendo al programma di tenere in memoria le seguenti variabili:
+\begin{itemize}
+\item $y_1$      uscita del sistema
+\item $y$        uscita del controllore
+\item $u$        switch che ci consente di passare dal continuo al discreto
+\item $w$        velocit\'a del vento
+\item $ET[CEOL]$ ingresso al controllore relativo all'implementazione dell'event triggering proveniente                      dal file CEOL.T
+\item $e1$       errore tra lo stato e lo stato dipendente dal trigger
+\item $ne$       modulo dell'errore
+\item $nr$       valore di soglia oltre il quale campiono
+\item $nx$       modulo dello stato
+\item $uc[CEOL]$ ingresso nel caso continuo , il controllo viene direttamente all'interno del file CEOL.T
+\item $er[CEOL]$ errore tra lo stato dipendente dal trigger e il riferimento  
+\end{itemize}
+
+Con il comando simu stiamo effettuando una simulazione per 20 secondi a partire dall'istante 0.
+
+A seguire analizziamo il codice relativo al file CONEOL.T il quale serve essenzialmente per relazionare le variabili di input-output tra le varie classi che le generano e quelle che le richiedono
+
+CONNECTING SYSTEM CONEOL
+TIME t
+
+ud1[DEOL]=42 
+
+ud2[DEOL]=y1[CEOL] 
+
+ET[DEOL]=ET[CEOL] 
+
+ud[CEOL]=y[DEOL] 
+
+x1k[CEOL]=x1k[DEOL] 
+
+w[CEOL]=t 
+
+END
+Procedendo con ordine abbiamo:
+\begin{itemize}
+\item $ud1$                 riferimento utilizzato per il sistema controreazionato
+\item $ud2[DEOL]=y1[CEOL]$  l'uscita viene collegata all'ingresso per effettuare la retroazione
+\item $ET[DEOL]=ET[CEOL]$   collega l'uscita ET(trigger) del processo all'ingresso ET del controllore 
+\item $ud[CEOL]=y[DEOL]$    l'uscita del controllore viene reinserita nel processo , PITCH
+\item $x1k[CEOL]=x1k[DEOL]$ stato del controllo comandato dal trigger
+\item $w[CEOL]=t$           disturbo del vento
+\end{itemize}
+
+Per quanto riguarda il codice relativo al file CEOL.T riferito al modello continuo abbiamo
+
+CONTINUOUS SYSTEM CEOL
+
+
+INPUT xr w ud x1k 
+OUTPUT y1 ET
+
+STATE x1 I 
+DER dx1 dI
+TIME t\\
+u=FC*uc+(1-FC)*ud \\
+er=y1-xr\\
+uc=kcp*er+ki*I\\ 
+dI=er\\
+dx1=a*x1+b*u+e*w\\ 
+y1=x1 \\
+e1=x1-x1k\\ 
+ne=sqrt(sqr(e1))\\ 
+nx=sqrt(sqr(x1)) \\
+rhomax=2*theta*0.5/20.1443\\
+nr=rhomax*nx\\
+ET=If ne<nr Then 0 Else 1\\
+a:-0.1205\\
+b:-2.882\\
+e:0.0658\\
+FC:0\\
+theta: 0.9\\
+kcp:0.652\\
+ki:0.347\\
+
+escludendo le variabili specificate in precedenza abbiamo
+\begin{itemize}
+\item $u$      switch implementato per il controllo continuo
+\item $uc$     ingresso nel caso continuo , il controllo viene direttamente all'interno del file CEOL
+\item $dx1$    derivata dello spazio di stato
+\item $y1$     uscita in riferimento ad un valore C=1
+\item $e1$     errore tra lo stato e lo stato dipendente dal trigger
+\item $ne$     modulo dell'errore
+\item $nx$     modulo dello stato
+\item $rhomax$ indice relativo al trigger
+
+\item $a$      riferito a $\gamma=\frac{\delta \, T_{aero}}{\delta \, \Omega}$
+\item $b$      riferito a $\sigma=\frac{\delta \, T_{aero}}{\delta \, \beta}$
+\item $e$      riferito a $\alpha=\frac{\delta \, T_{aero}}{\delta \, \omega}$
+\item $FC$
+\item $theta$
+\item $kcp$    $K_{p}$ guadagno proporzionale
+\item $ki$     $K_{i}$ guadagno integrativo
+\end{itemize}
+
+Infine andiamo ad analizzare il codice relativo all'ultimo file DEOL.T riferito al modello discreto
+
+DISCRETE SYSTEM DEOL
+
+INPUT ud1 ud2 ET
+
+OUTPUT y x1k
+
+STATE deltak z1 I
+
+NEW  deltakp z1p dI
+TIME t
+TSAMP ts\\
+er=x1k-42\\
+ts=t+delta\\
+y=er*kp+ki*I\\
+deltakp=deltak+ET*(t-deltak)\\
+z1p=z1+ET*(-z1+ud2)\\
+x1k=z1\\
+dI=er\\
+kp= 0.652 \\
+ki= 0.347 \\
+delta=1e-3\\
+
+END
+
+Dove:
+\begin{itemize}
+\item $ud1$     ud1 variabile del riferimento
+\item $ud2$     ud2 uscita del sistema (velocita di rotazione del rotore)
+\item $ET$      trigger 
+\item $y$       uscita del controllore
+\item $x1k$     stato dipendente dal trigger (in output)
+\item $e$       errore tra lo stato dipendente dal trigger e riferimento
+\item $z1 e zp$ stato e derivato dipendenti dal trigger
+\item $e$       uscita dello stato del trigger
+\item $kp$      guadagno proporzionale
+\item $ki$      guadagno integrativo
+\item $x1k$     variabile di riferiemnto per eseguire operazione di controllo 
+\end{itemize}
+
+\end{document}
+
+
